@@ -1,0 +1,50 @@
+{
+  "name": "smart-contracts",
+  "version": "1.0.0",
+  "description": "Decubate Crowdfunding",
+  "main": "index.js",
+  "scripts": {
+    "test": "truffle test",
+    "coverage": "truffle run coverage",
+    "commit": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Decubate-com/public-repository.git"
+  },
+  "keywords": [
+    "crowfunding,token,vesting,staking"
+  ],
+  "author": "Vipin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Decubate-com/public-repository/issues"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.2",
+    "@openzeppelin/contracts-upgradeable": "^4.3.2",
+    "@openzeppelin/test-helpers": "^0.5.15",
+    "@truffle/hdwallet-provider": "1.5.1",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "chai": "^4.3.4",
+    "dotenv": "^10.0.0",
+    "ethereum-checksum-address": "0.0.7",
+    "node-rest-client-promise": "^3.1.1"
+  },
+  "devDependencies": {
+    "@openzeppelin/truffle-upgrades": "^1.9.1",
+    "@types/mocha": "^9.0.0",
+    "ganache-cli": "^6.12.2",
+    "git-cz": "^4.7.6",
+    "solidity-coverage": "^0.7.17",
+    "truffle": "^5.4.14",
+    "truffle-plugin-verify": "^0.5.15"
+  },
+  "homepage": "https://github.com/Decubate-com/public-repository#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/git-cz"
+    }
+  }
+}
