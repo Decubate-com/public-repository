@@ -53,11 +53,11 @@ interface IDecubateCrowdfunding {
    */
   function setWalletStoreAddress(address _contract) external returns (bool);
 
-  function setTiersAddress(address _contract) external returns (bool);
-
   function setInnovatorAddress(address _innovator) external returns (bool);
 
-  function setUsingBrackets(address _contract, bool _value)
+  function setInvestmentAddress(address _contract) external returns (bool);
+
+  function setAllocation(address _address, uint256 _amount)
     external
     returns (bool);
 
@@ -81,6 +81,8 @@ interface IDecubateCrowdfunding {
       uint256,
       uint256
     );
+
+  function getParticipants() external view returns (address[] memory);
 
   function getTotalToken() external view returns (uint256);
 

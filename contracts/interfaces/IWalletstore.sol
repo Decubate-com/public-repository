@@ -8,5 +8,7 @@ interface IWalletStore {
 
   function addUser(address _address) external returns (bool);
 
+  function replaceUser(address oldAddress, address newAddress) external returns (bool);
+
   function getVerifiedUsers() external view returns (address[] memory);
 }

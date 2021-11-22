@@ -49,6 +49,7 @@ interface IDecubateVesting {
     uint256 cliff;
     uint256 start;
     uint256 duration;
+    uint256 initialUnlockPercent;
     bool revocable;
     bool active;
   }
@@ -58,8 +59,14 @@ interface IDecubateVesting {
     uint256 cliff;
     uint256 start;
     uint256 duration;
+    uint256 initialUnlockPercent;
     mapping(address => WhitelistInfo) whitelistPool;
     bool revocable;
+    bool active;
+  }
+
+  struct MaxTokenTransferValue {
+    uint256 amount;
     bool active;
   }
 
@@ -81,27 +88,31 @@ interface IDecubateVesting {
 
   /**
    *
-   * @dev VIPInfo is the struct type which store unlock members after TGE
-   *
-   */
-  struct VIPInfo {
-    address wallet;
-    uint256 unlockAmount;
-    uint256 unlockTime;
-    bool active;
-  }
-
-  /**
-   *
    * inherit functions will be used in contract
    *
    */
+
+  function getVestAmount(uint256 _option, address _wallet)
+    external
+    view
+    returns (uint256);
+
+  function getReleasableAmount(uint256 _option, address _wallet)
+    external
+    view
+    returns (uint256);
+
+  function getVestingInfo(uint256 _strategy)
+    external
+    view
+    returns (VestingInfo memory);
 
   function setVestingInfo(
     uint256 _strategy,
     uint256 _cliff,
     uint256 _start,
     uint256 _duration,
+    uint256 _initialUnlockPercent,
     bool _revocable
   ) external returns (bool);
 
@@ -111,19 +122,16 @@ interface IDecubateVesting {
     uint256 _option
   ) external returns (bool);
 
-  function setDecubateToken(IERC20 _token) external returns (bool);
+  function getWhitelist(uint256 _option, address _wallet)
+    external
+    view
+    returns (WhitelistInfo memory);
 
-  function getDecubateToken() external view returns (address);
+  function setToken(address _addr) external returns (bool);
+
+  function getToken() external view returns (address);
 
   function claimDistribution(uint256 _option, address _wallet)
     external
     returns (bool);
-
-  function addInitialUnlock(
-    address _wallet,
-    uint256 _amount,
-    uint256 _time
-  ) external returns (bool);
-
-  function claimInitialUnlock() external returns (bool);
 }
